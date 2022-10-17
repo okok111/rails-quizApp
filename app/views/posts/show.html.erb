@@ -1,1 +1,51 @@
 <h1>posts#show</h1>
+<%= link_to "問題一覧に戻る", posts_path %>
+<div class="post">
+    <p>問題：<%= @post.title %></p>
+    <% if @post.ans1 == true %>
+        <input type="button" value="<%= @post.choice1 %>" onclick="answerBtn()">
+    <% else %>
+        <input type="button" value="<%= @post.choice1 %>" onclick="machigaiBtn()">
+    <% end %>
+    <br><br>
+    <% if @post.ans2 == true %>
+        <input type="button" value="<%= @post.choice2 %>" onclick="answerBtn()">
+    <% else %>
+        <input type="button" value="<%= @post.choice2 %>" onclick="machigaiBtn()">
+    <% end %>
+    <br><br>
+    <% if @post.ans3 == true %>
+        <input type="button" value="<%= @post.choice3 %>" onclick="answerBtn()">
+    <% else %>
+        <input type="button" value="<%= @post.choice3 %>" onclick="machigaiBtn()">
+    <% end %>
+</div>
+
+<div class="kaisetsu">
+    <p id = kaisetsu>正解！！！！　<%= @post.commentary %></p>   
+</div>
+
+<script>
+    // 解説内容を初めは非表示にするや～つ
+    document.getElementById("kaisetsu").style.visibility = "hidden";
+
+    // 正解ボタン押したときの処理的なこ～ど
+    function answerBtn() {
+        const kaisetsu = document.getElementById("kaisetsu");
+
+        if(kaisetsu.style.visibility == "visible") {
+            //表示だったら非表示にするお
+            kaisetsu.style.visibility ="hidden";
+        }else{
+            //非表示だったら表示にするお
+            kaisetsu.style.visibility ="visible";
+            // 正解の時の文章いれるお
+            alert("正解！！！！！");
+        }
+    }
+
+    // 間違い選択したきのメッセージ
+    function machigaiBtn(){
+        alert("残念！！！！！！！");
+    }
+</script>
