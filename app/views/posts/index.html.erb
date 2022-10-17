@@ -3,6 +3,10 @@
 <div class="posts-container">
     <% @posts.each do |t| %>
         <div class="post">
+            <p>問題:<%= t.id %></p>
+            <%= link_to post_path(t.id) do %>
+                <p><%= safe_join(t.title.split("\n"),tag(:br)) %></p>
+            <% end %>
             <% if user_signed_in? %>
                 <%= link_to "編集する", edit_post_path(t.id) %>
                 <%= link_to "削除する", post_path(t.id), method: :delete %>
