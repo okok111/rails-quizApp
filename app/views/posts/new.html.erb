@@ -1,13 +1,6 @@
 <h1>posts#new</h1>
 <%= form_for @post do |f| %>
-<div class="field">
-    <%= f.label :title %>
-    <p><%= f.text_field :title, :size => 20 %></p>
-    <%= f.label :image %>
-    <p><%= f.file_field :image %></p>
-    <%= f.label :contents %>
-    <p><%= f.text_field :contents, :size => 20 %></p>
-</div>
-<%= f.submit "postする" %>
+    
+    <%= f.submit "postする" %>
 <% end %>
 <%= link_to "post一覧に戻る", posts_path %>
